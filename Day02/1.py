@@ -14,7 +14,7 @@ class Choice:
     @classmethod
     def parse(cls, choice):
         colors = Counter()
-        for count, color in map(lambda c: c.split(), choice.split(', ')):
+        for count, color in map(str.split, choice.split(', ')):
             colors[color] += int(count)
         return cls(colors)
 
@@ -33,6 +33,7 @@ class Game:
         id_ = int(prefix.split()[1])
         choices = list(map(Choice.parse, ch.split('; ')))
         return cls(id_, choices)
+
 
 COLORS_MAX = {'red': 12, 'green': 13, 'blue': 14}
 print(sum(g.id for g in map(Game.parse, map(str.strip, stdin)) if g.possible(COLORS_MAX)))

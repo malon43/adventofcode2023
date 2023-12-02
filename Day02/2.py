@@ -5,6 +5,7 @@ from collections import Counter
 from functools import reduce
 from operator import mul, or_
 
+
 class Choice:
     def __init__(self, colors):
         self.colors = colors
@@ -12,7 +13,7 @@ class Choice:
     @classmethod
     def parse(cls, choice):
         colors = Counter()
-        for count, color in map(lambda c: c.split(), choice.split(', ')):
+        for count, color in map(str.split, choice.split(', ')):
             colors[color] += int(count)
         return cls(colors)
 
@@ -34,5 +35,6 @@ class Game:
         id_ = int(prefix.split()[1])
         choices = list(map(Choice.parse, ch.split('; ')))
         return cls(id_, choices)
+
 
 print(sum(map(Game.get_power, map(Game.parse, map(str.strip, stdin)))))
