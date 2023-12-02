@@ -31,7 +31,7 @@ class Game:
 
     @classmethod
     def parse(cls, line):
-        prefix, ch = line.split(':')
+        prefix, ch = line.split(': ')
         id_ = int(prefix.split()[1])
         choices = list(map(Choice.parse, ch.split('; ')))
         return cls(id_, choices)
