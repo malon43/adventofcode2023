@@ -9,7 +9,7 @@ class Choice:
         self.colors = colors
 
     def possible(self, colors_max):
-        return all(count <= colors_max.get(color, 0) for color, count in self.colors.items())
+        return self.colors <= colors_max
 
     @classmethod
     def parse(cls, choice):
@@ -35,5 +35,5 @@ class Game:
         return cls(id_, choices)
 
 
-COLORS_MAX = {'red': 12, 'green': 13, 'blue': 14}
+COLORS_MAX = Counter({'red': 12, 'green': 13, 'blue': 14})
 print(sum(g.id for g in map(Game.parse, map(str.strip, stdin)) if g.possible(COLORS_MAX)))
