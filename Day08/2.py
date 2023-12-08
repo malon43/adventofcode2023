@@ -5,6 +5,14 @@ Works only for the magical input, which I had on AOC
 I am assuming this was also true for everyone else)
 
 I absolutely despise this solution. :-)
+
+Code assumes:
+* There is exactly one `Z` node reachable from each `A` node.
+* The length of the cycle is divisible by the number of instructions.
+* The number of steps from the node `A` to the node `Z` is the same as the
+  length of the cycle.
+* Every reachable `Z` node is on a cycle reachable from the `A` node. (Not checked)
+* There is a solution. (Not checked)
 """
 
 from sys import stdin
