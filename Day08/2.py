@@ -43,7 +43,6 @@ for node in nodes:
         i += 1
 
     if cycle_start != cycle_length:
-        print(node, cycle_start, cycle_length)
         raise ValueError("This input is not magical")
 
     cycles.append((cycle_start, cycle_length))
